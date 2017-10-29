@@ -40,15 +40,6 @@ set undodir^=~/.backup/.undofiles//
 set ignorecase
 
 "------------------------------------------------------------
-" Styling
-
-syntax enable
-# set background=dark
-let g:airline_theme='Atelier_CaveDark'
-set term=screen-256color
-" colorscheme Atelier_CaveDark"
-
-"------------------------------------------------------------
 " Settings 
 
 set hidden
