@@ -21,7 +21,7 @@ alias mf="make;make free;"
 
 # git aliases
 alias g="git"
-alias add="git add -uk"
+alias add="git add -u"
 alias stats="git status"
 alias commit="git commit"
 alias gtree="git ls-tree --full-tree -r HEAD"
