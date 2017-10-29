@@ -1,0 +1,3 @@
+alias clac="ssh -X ps2958@clac.cs.columbia.edu"
+alias cunix="ssh -X ps2958@cunix.cc.columbia.edu"
+alias drop="ssh -X root@192.241.148.126"

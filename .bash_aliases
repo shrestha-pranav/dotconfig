@@ -1,4 +1,4 @@
-# enable color support of ls and also add handy aliases
+#!/bin/bash
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -21,12 +21,7 @@ alias mf="make;make free;"
 
 # git aliases
 alias g="git"
-alias add="git add"
+alias add="git add -uk"
 alias stats="git status"
 alias commit="git commit"
 alias gtree="git ls-tree --full-tree -r HEAD"
-
-alias submit="/home/w3157/submit/submit-lab"
-
-alias clac="ssh -X ps2958@clac.cs.columbia.edu"
-alias cunix="ssh -X ps2958@cunix.cc.columbia.edu"

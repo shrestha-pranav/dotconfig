@@ -1,4 +1,5 @@
-case $- in *i*) ;; *) return;; esac #If not running interactively, exit
+#!/bin/bash
+[ -z "$PS1" ] && return #If not running interactively, exit
 
 shopt -s histappend     #append not overwrite
 HISTSIZE=1000           #setting history length
@@ -57,3 +58,4 @@ fi
 
 umask 077
 export EDITOR=vim
+PS1="\n$PS1"

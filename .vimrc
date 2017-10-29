@@ -1,12 +1,12 @@
 set nocompatible
 
 if has("vms")
-  set nobackup    " do not keep a backup file, use versions instead"
+  set nobackup  " do not keep a backup file, use versions instead"
 else
   set backup    " keep a backup file (restore to previous version)"
-  set undofile    "keep an undo file (undo changes after closing)"
+  set undofile  "keep an undo file (undo changes after closing)"
 endif
-set history=50    " keep 50 lines of command line history"
+set history=50  " keep 50 lines of command line history"
 
 if has('mouse') | set mouse=a | endif
 
@@ -34,12 +34,6 @@ endif
 
 packadd matchit
 
-set number
-
-autocmd FileType make setlocal noexpandtab
-autocmd FileType text setlocal autoindent expandtab softtabstop=2 textwidth=76 spell spelllang=en_us
-autocmd FileType help setlocal nospell
-
 set backupdir^=~/.backup/.backups//
 set dir^=~/.backup/.swapfiles//
 set undodir^=~/.backup/.undofiles//
@@ -49,7 +43,7 @@ set ignorecase
 " Styling
 
 syntax enable
-set background=dark
+# set background=dark
 let g:airline_theme='Atelier_CaveDark'
 set term=screen-256color
 " colorscheme Atelier_CaveDark"
@@ -76,17 +70,20 @@ set incsearch     " do incremental searching"
 
 set number
 set shiftwidth=4
-set softtabstop=4
+set softtabstop=2
 set shiftround
 set expandtab
 set foldmethod=marker
 set foldlevelstart=1
 set splitbelow
 set splitright
-set colorcolumn=81
 set visualbell
 set ttyfast
 set listchars=tab:▸\ ,eol:¬
+
+autocmd FileType make setlocal noexpandtab
+autocmd FileType text setlocal autoindent expandtab softtabstop=2 textwidth=76 spell spelllang=en_us
+autocmd FileType help setlocal nospell
 
 "------------------------------------------------------------
 " Mappings 
