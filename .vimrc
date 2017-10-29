@@ -54,7 +54,7 @@ set nostartofline
 set ruler
 set laststatus=2
 set t_vb=
-set cmdheight=2
+set cmdheight=1
 set notimeout ttimeout ttimeoutlen=200
 set confirm
 set incsearch     " do incremental searching"
