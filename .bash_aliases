@@ -25,3 +25,6 @@ alias add="git add -u"
 alias stats="git status"
 alias commit="git commit"
 alias gtree="git ls-tree --full-tree -r HEAD"
+
+alias dux="tmux detach"
+alias tux="tmux attach"

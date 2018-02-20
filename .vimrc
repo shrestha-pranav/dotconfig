@@ -32,8 +32,6 @@ if has('langmap') && exists('+langnoremap')
   set langnoremap
 endif
 
-packadd matchit
-
 set backupdir^=~/.backup/.backups//
 set dir^=~/.backup/.swapfiles//
 set undodir^=~/.backup/.undofiles//
@@ -54,7 +52,7 @@ set nostartofline
 set ruler
 set laststatus=2
 set t_vb=
-set cmdheight=1
+set cmdheight=2
 set notimeout ttimeout ttimeoutlen=200
 set confirm
 set incsearch     " do incremental searching"
@@ -70,7 +68,6 @@ set splitbelow
 set splitright
 set visualbell
 set ttyfast
-set listchars=tab:▸\ ,eol:¬
 
 autocmd FileType make setlocal noexpandtab
 autocmd FileType text setlocal autoindent expandtab softtabstop=2 textwidth=76 spell spelllang=en_us
