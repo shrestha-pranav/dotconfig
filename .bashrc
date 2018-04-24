@@ -60,4 +60,3 @@ umask 077
 export EDITOR=vim
 
 PROMPT_COMMAND="printf '\n'"
-cd

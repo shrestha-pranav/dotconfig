@@ -1,4 +1,4 @@
 #!/bin/bash
-test -f ~/.config/.bashrc && . ~/.config/.bashrc
-test -f ~/.config/.bash_aliases && . ~/.config/.bash_aliases
-test -f ~/.config/.local_aliases && . ~/.config/.local_aliases
+test -f ~/.config/bash/.bashrc && . ~/.config/bash/.bashrc
+test -f ~/.config/bash/.bash_aliases && . ~/.config/bash/.bash_aliases
+test -f ~/.config/bash/.local_profile && . ~/.config/bash/.local_profile
