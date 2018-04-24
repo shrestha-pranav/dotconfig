@@ -45,9 +45,6 @@ esac
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -60,3 +57,7 @@ umask 077
 export EDITOR=vim
 
 PROMPT_COMMAND="printf '\n'"
+
+# Bash aliases and local profiles
+test -f .bash_aliases && . .bash_aliases
+test -f ~/.local_profile && . ~/.local_profile
