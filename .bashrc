@@ -59,5 +59,5 @@ export EDITOR=vim
 PROMPT_COMMAND="printf '\n'"
 
 # Bash aliases and local profiles
-test -f .bash_aliases && . .bash_aliases
+test -f ~/.bash_aliases && . ~/.bash_aliases
 test -f ~/.local_profile && . ~/.local_profile

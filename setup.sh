@@ -23,6 +23,7 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 # Set up personal configuration files
 # Includes bash, tmux and vim configs
 ln -s -f "$DIR/.bashrc" ~/.bashrc
+ln -s -f "$DIR/.bash_aliases" ~/.bash_aliases
 ln -s -f "$DIR/.vimrc" ~/.vimrc
 ln -s -f "$DIR/.tmux.conf" ~/.tmux.conf
 cp "$DIR/.local_profile" ~/.local_profile
