@@ -35,3 +35,6 @@ function ac { source activate $1; cd "$HOME/$1";}
 alias dac="source deactivate"
 alias lab="jupyter notebook"
 alias hub="jupyterhub"
+
+# windows WSL bash alias
+alias start="explorer.exe"

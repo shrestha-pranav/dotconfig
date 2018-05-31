@@ -11,6 +11,7 @@ test -f ~/.bash_profile && mv ~/.bash_profile ~/.backup/.configs/
 test -f ~/.tmux.conf && mv ~/.tmux.conf ~/.backup/.tmux.conf
 test -f ~/.vimrc && mv ~/.vimrc ~/.backup/.vimrc
 
+echo "Starting config setup"
 # Find where this file is located to set as config directory
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do 
@@ -19,6 +20,8 @@ while [ -h "$SOURCE" ]; do
   [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+echo "Setup directory=$DIR. Linking files."
 
 # Set up personal configuration files
 # Includes bash, tmux and vim configs
