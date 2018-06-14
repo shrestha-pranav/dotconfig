@@ -1,13 +1,21 @@
+#!/bin/bash
 # ssh helper function 
 # Usage: shh username servername
 # Add servers with servie[server_alias]='server_address'
 declare -A servie
 
 function shh {
-  if [[ $# -eq 2 ]]; then ssh "$1@${servie[$2]}"
-  else echo "Usage: shh username server"
+  if [[ $# -ne 2 ]]; then
+      echo "Usage: ssh username server"
+  else
+    if [ -z ${servie[$2]} ]; then
+        ssh "$1@$2"
+    else
+        ssh "$1@${servie[$2]}"
+    fi
   fi
 }
 
 # start all sessions in tmux by default
-[[ $SHLVL -eq 1 ]] && tux
+# [[ $SHLVL -eq 1 ]] && tux
+[ ! -n "$SSH_CLIENT" ] && [ ! -n "$SSH_TTY" ] && tux

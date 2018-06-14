@@ -31,7 +31,8 @@ alias tux="tmux attach"
 alias dux="tmux detach"
 
 # python/conda aliases
-function ac { source activate $1; cd "$HOME/$1";}
+# function ac { source activate $1; cd "$HOME/$1";}
+alias ac="source activate"
 alias dac="source deactivate"
 alias lab="jupyter notebook"
 alias hub="jupyterhub"
