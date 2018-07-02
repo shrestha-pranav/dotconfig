@@ -10,6 +10,7 @@ test -f ~/.bashrc && mv ~/.bashrc ~/.backup/.configs/
 test -f ~/.bash_profile && mv ~/.bash_profile ~/.backup/.configs/
 test -f ~/.tmux.conf && mv ~/.tmux.conf ~/.backup/.tmux.conf
 test -f ~/.vimrc && mv ~/.vimrc ~/.backup/.vimrc
+test -f ~/.dircolors && mv ~/.dircolors ~/.backup/.dircolors
 
 echo "Starting config setup"
 # Find where this file is located to set as config directory
@@ -29,4 +30,5 @@ ln -s -f "$DIR/.bashrc" ~/.bashrc
 ln -s -f "$DIR/.bash_aliases" ~/.bash_aliases
 ln -s -f "$DIR/.vimrc" ~/.vimrc
 ln -s -f "$DIR/.tmux.conf" ~/.tmux.conf
+ln -s -f "$DIR/.dircolors" ~/.dircolors
 cp "$DIR/.local_profile" ~/.local_profile
