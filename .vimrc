@@ -56,6 +56,7 @@ set cmdheight=2
 set notimeout ttimeout ttimeoutlen=200
 set confirm
 set incsearch     " do incremental searching"
+set background=dark
 
 set number
 set shiftwidth=4
