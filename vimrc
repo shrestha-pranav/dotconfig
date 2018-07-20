@@ -59,7 +59,7 @@ set incsearch     " do incremental searching"
 set background=dark
 
 set number
-set shiftwidth=4
+set shiftwidth=2
 set softtabstop=2
 set shiftround
 set expandtab

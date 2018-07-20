@@ -9,8 +9,18 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# Go back n times
+function -(){ 
+  if [ "$#" = "0" ]; then cd .. > /dev/null
+  elif [ "$#" = "1" -a "$1" = "-" ]; then cd -
+  else
+    curdir=`pwd`
+    for i in $(seq ${1}); do cd .. > /dev/null; done
+    export OLDPWD=$curdir
+  fi
+}
+
 # more ls aliases
-alias ..="cd .."
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -27,7 +37,7 @@ alias commit="git commit"
 alias gtree="git ls-tree --full-tree -r HEAD"
 
 # tmux aliases
-alias tux="tmux attach"
+alias tux="tmux new-session -A -s main"
 alias dux="tmux detach"
 
 # python/conda aliases

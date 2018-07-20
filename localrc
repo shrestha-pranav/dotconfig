@@ -16,6 +16,3 @@ function shh {
   fi
 }
 
-# start all sessions in tmux by default
-# [[ $SHLVL -eq 1 ]] && tux
-[ ! -n "$SSH_CLIENT" ] && [ ! -n "$SSH_TTY" ] && tux
