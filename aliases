@@ -49,3 +49,8 @@ alias hub="jupyterhub"
 
 # windows WSL bash alias
 alias start="explorer.exe"
+
+# productivity alias
+alias did="vim +'normal Go' +'r!date' ~/did.txt"
+alias path="echo $PATH | tr ':' '\n'"
+
