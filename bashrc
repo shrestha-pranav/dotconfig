@@ -56,6 +56,8 @@ fi
 umask 077
 export EDITOR=vim
 
+eval `dircolors ~/.dircolors`
+
 PROMPT_COMMAND="printf '\n'"
 
 # Bash aliases and local profiles
