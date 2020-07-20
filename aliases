@@ -52,5 +52,4 @@ alias start="explorer.exe"
 
 # productivity alias
 alias did="vim +'normal Go' +'r!date' ~/did.txt"
-alias path="echo $PATH | tr ':' '\n'"
-
+alias path="echo \$PATH | tr ':' '\n'"
