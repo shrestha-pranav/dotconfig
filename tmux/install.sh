@@ -3,6 +3,7 @@
 # Based on https://gist.github.com/P7h/91e14096374075f5316e
 VERSION=3.1
 
+sudo apt-get update
 sudo apt-get -y remove tmux
 sudo apt-get -y install wget tar libevent-dev libncurses-dev build-essential
 

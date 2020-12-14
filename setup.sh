@@ -26,7 +26,6 @@ BACKUP="$HOME/.backup/.tmp/"$(date '+%d%b%Y')
 mkdir -p $BACKUP
 test -f "$HOME/.bashrc"       && mv "$HOME/.bashrc"    $BACKUP 
 test -f "$HOME/.localrc"      && mv "$HOME/.localrc"   $BACKUP 
-test -f "$HOME/.tmux.conf"    && mv "$HOME/.tmux.conf" $BACKUP 
 test -f "$HOME/.vimrc"        && mv "$HOME/.vimrc"     $BACKUP 
 test -f "$HOME/.dircolors"    && mv "$HOME/.dircolors" $BACKUP 
 test -f "$HOME/.aliases"      && mv "$HOME/.aliases"   $BACKUP 
@@ -42,7 +41,8 @@ cp -f  "$DIR/localrc"   "$HOME/.localrc"
 
 echo "Config files linked. Setting up Tmux."
 
-chmod u+x $DIR/tmux/setup.sh
+chmod u+x $DIR/tmux/install.sh $DIR/tmux/setup.sh
+$DIR/tmux/install.sh
 $DIR/tmux/setup.sh
 
 echo "Setup completed. You're good to go!"
