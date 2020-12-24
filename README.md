@@ -1,8 +1,8 @@
 ## Config Files for bash terminals
 
 ### Installation:
-- git clone https://github.com/shrestha-pranav/dotconfig
-- cd dotconfig
+- git clone https://github.com/shrestha-pranav/dotconfig .config
+- cd .config
 - chmod u+x setup.sh && ./setup.sh
 
 **Note**: The git directory is used as the setup directory and config files at `$HOME` is linked to this by setup.sh. The setup creates backup directories to backup existing configs and for temporary vim files.
@@ -10,15 +10,11 @@
 **Important:** Additional bash settings should be added to the ~/.local_profile file
 
 ### Useful bash aliases
-Use 'alias [command]' or just 'alias' for details)
+Use 'type [command]' or just 'alias' for details)
 
 - Directory settings: .., ls, ll
-- Makefile: val, m, mm, mf
 - Git: gtree, add, commit
-- Tmux: tux, dux
-- Python/Conda envs: ac (`source activate`), dac (deactivate), lab, hub
-- Windows Explorer: start (opens directory in explorer.exe)
-- SSH: Add servers as documented in .local_profile and use with 'shh [server_alias]'
+- Tmux: tux [name]
 
 ### TMUX - Terminal Multiplexer
 Improve terminal use massively. If tmux is not installed (check with `which tmux` or `tmux -V`), use tmux.sh to install.
