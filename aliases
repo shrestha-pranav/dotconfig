@@ -5,51 +5,20 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
 fi
 
-# Go back n times
-function -(){ 
-  if [ "$#" = "0" ]; then cd .. > /dev/null
-  elif [ "$#" = "1" -a "$1" = "-" ]; then cd -
-  else
-    curdir=`pwd`
-    for i in $(seq ${1}); do cd .. > /dev/null; done
-    export OLDPWD=$curdir
-  fi
-}
-
 # more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
 alias l='ls -CF'
-
-# compiler aliases
-alias val="valgrind --leak-check=yes"
-alias m="make"
-alias mm="make;make run;"
-alias mf="make;make free;"
+alias la='ls -A'
+alias ll='ls -alF'
 
 # git aliases
 alias add="git add -u"
 alias commit="git commit"
 alias gtree="git ls-tree --full-tree -r HEAD"
 
-# tmux aliases
-alias tux="tmux new-session -A -s main"
-alias dux="tmux detach"
-
-# python/conda aliases
-# function ac { source activate $1; cd "$HOME/$1";}
-alias ac="source activate"
-alias dac="source deactivate"
-alias lab="jupyter notebook"
-alias hub="jupyterhub"
-
-# windows WSL bash alias
-alias start="explorer.exe"
-
-# productivity alias
-alias did="vim +'normal Go' +'r!date' ~/did.txt"
 alias path="echo \$PATH | tr ':' '\n'"
+
+# tmux aliases
+function tux { tmux new-session -A -s ${1:-main}; }
+
