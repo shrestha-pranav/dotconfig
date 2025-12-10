@@ -22,12 +22,21 @@ case "$TERM" in xterm-color|*-256color) color_prompt=yes;; esac
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then color_prompt=yes; fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]\[\033[01;33m\]@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+# Add docker-container information to the PS1
+DOCKER_PREFIX=''
+if [ -f /.dockerenv ] && [ -n "$DOCKER_NAME" ]; then
+  DOCKER_PREFIX='['"$DOCKER_NAME"'] '
+  if [ "$color_prompt" = yes ]; then
+    DOCKER_PREFIX='\[\033[01;36m\]['"$DOCKER_NAME"']\[\033[00m\] '
+  fi
 fi
-unset color_prompt force_color_prompt
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}'"$DOCKER_PREFIX"'\[\033[01;32m\]\u\[\033[00m\]\[\033[01;33m\]@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}'"$DOCKER_PREFIX"'\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt DOCKER_PREFIX
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in xterm*|rxvt*)
@@ -55,7 +64,7 @@ export EDITOR=vim
 
 eval `dircolors ~/.dircolors`
 
-PROMPT_COMMAND="echo"
+PROMPT_COMMAND="PS1=\"${PS1}\"; echo"
 
 # Bash aliases and local profiles
 test -f ~/.aliases && . ~/.aliases
