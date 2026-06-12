@@ -7,7 +7,7 @@
 `<P> c` new (cwd) · `<P> r` rename · `<P> X` kill (confirm) · `<P> C-x` kill others · `<P> C-[` / `C-]` prev/next · `Shift+←/→` prev/next (no prefix) · `<P> Tab` last MRU · `<P> L` link from session · `<P> !` break pane → window · `<P> j` join window → pane · `<P> m` activity monitor · `<P> M` silence monitor
 
 ## Panes — split / nav / size
-`<P> \` split right · `<P> -` split down · `Alt+←↑↓→` move focus (no prefix) · `<P> ←↑↓→` move focus · `<P> [` / `]` prev/next · `<P> C-o` rotate · `<P> Space` grid layout · `<P> v` / `h` force cols/rows · <code><P> &#124;</code> swap with pane 1 · `<P> x` kill (confirm) · `<P> z` zoom toggle (status `[Z]`) · `<P> C-←↑↓→` resize 1 cell (repeats) · mouse drag border = resize
+`<P> \` split right · `<P> -` split down · `Alt+←↑↓→` move focus (no prefix) · `<P> ←↑↓→` move focus · `<P> C-o` rotate · `<P> Space` grid layout · `<P> v` / `h` force cols/rows · <code><P> &#124;</code> swap with pane 1 · `<P> x` kill (confirm) · `<P> z` zoom toggle (status `[Z]`) · `<P> C-←↑↓→` resize 1 cell (repeats) · mouse drag border = resize
 
 ## Copy mode (vi)
 Scroll up = enter · `v` select · `V` line · `y`/`Enter` copy+cancel · `Y` line · `D` to EOL · `A` append · `C-j` copy+cancel · `Alt+↑↓` line · `Alt+PgUp/Dn` half · `PgUp/Dn` page · drag = auto-copy · `<P> p` paste · `<P> C-p` choose buffer
