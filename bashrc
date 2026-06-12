@@ -67,5 +67,5 @@ eval `dircolors ~/.dircolors`
 PROMPT_COMMAND="PS1=\"${PS1}\"; echo"
 
 # Bash aliases and local profiles
-test -f ~/.aliases && . ~/.aliases
-test -f ~/.localrc && . ~/.localrc
+test -f ~/.config/aliases && . ~/.config/aliases
+test -f ~/.config/localrc && . ~/.config/localrc
