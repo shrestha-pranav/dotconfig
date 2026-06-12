@@ -1,1 +1,6 @@
 .local_aliases
+
+# tmux: TPM-managed plugins and Python bytecode
+tmux/plugins/
+__pycache__/
+*.pyc
