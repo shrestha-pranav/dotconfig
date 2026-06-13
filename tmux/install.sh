@@ -1,7 +1,8 @@
 # Steps to build and install tmux from source on Ubuntu.
 # Takes < 25 seconds on EC2 env [even on a low-end config instance].
 # Based on https://gist.github.com/P7h/91e14096374075f5316e
-VERSION=3.1
+# 3.3+ required for `allow-passthrough` used in tmux.conf; pinned to latest stable.
+VERSION=3.6b
 
 sudo apt-get update
 sudo apt-get -y remove tmux
