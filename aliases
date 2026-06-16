@@ -2,8 +2,14 @@
 
 # add colors to grep and ls
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    # GNU/Linux branch: dircolors eval left disabled; default colors still apply
+    # test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+else
+    # macOS / BSD branch: no GNU dircolors; use BSD ls colors + BSD grep color
+    export CLICOLOR=1
+    alias ls='ls -G'
     alias grep='grep --color=auto'
 fi
 
