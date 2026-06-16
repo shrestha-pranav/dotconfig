@@ -62,8 +62,7 @@ fi
 umask 077
 export EDITOR=vim
 
-eval `dircolors ~/.dircolors`
-
+# macOS branch: dircolors is GNU coreutils, absent on stock macOS — skip it
 PROMPT_COMMAND="PS1=\"${PS1}\"; echo"
 
 # Bash aliases and local profiles
