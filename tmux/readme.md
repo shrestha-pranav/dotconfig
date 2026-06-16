@@ -22,13 +22,20 @@ For the full key reference, see **[cheatsheet.md](cheatsheet.md)**.
 
 ## Status line
 
-Status bar is at the top (bottom for remote sessions). Right side shows:
+Status bar is at the bottom. Right side shows:
 
 ```
-[PREFIX]/[COPY] · [OFF] · [Z] | CPU | MEM | (GPU) | user@host | date
+[PREFIX]/[COPY] · [OFF] · [Z] | cwd | CPU MEM | (GPU) | date
 ```
 
-- **CPU / MEM** via [tmux-plugin-sysstat](https://github.com/samoshkin/tmux-plugin-sysstat)
+- **cwd** of the active pane, home collapsed to `~`, hard-capped to the rightmost
+  24 chars (leading `…` marks truncation)
+- **CPU / MEM** via [tmux-plugin-sysstat](https://github.com/samoshkin/tmux-plugin-sysstat),
+  shown as bare numbers (labels dropped via view templates; the `%` is stripped in
+  `scripts/cpu.sh` / `scripts/mem.sh`, which a plugin update would revert)
+- **date** is shown only when the client is wider than 80 cols; as you narrow the
+  terminal it drops first, handing that space back to the window list (which tmux
+  otherwise truncates before the right side)
 - **GPU** utilization is appended only on machines with `nvidia-smi` (probed once
   at load, so other machines spawn no per-tick subprocess)
 - `[PREFIX]`/`[COPY]`/`[Z]` indicators, and `[OFF]` when bindings are toggled off (`F12`)
@@ -54,9 +61,7 @@ stable version from source on Debian/Ubuntu; on macOS use `brew install tmux`.
 When you tmux into a remote host from inside a local tmux, both sessions fight
 over the prefix. Press `F12` to switch *all* bindings and prefix handling off in
 the outer session, so keystrokes pass through to the inner one; `F12` again to
-restore. The status line greys out and shows `[OFF]` while disabled. Remote
-sessions are detected via `$SSH_CLIENT` and load
-[`tmux.remote.conf`](tmux.remote.conf).
+restore. The status line greys out and shows `[OFF]` while disabled.
 
 ## Clipboard
 
