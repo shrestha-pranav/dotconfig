@@ -58,3 +58,37 @@ complete -F _wt_complete wt
 
 # Machine-local, secret, and work-specific settings (gitignored, not shared)
 test -f ~/.config/.local_aliases && . ~/.config/.local_aliases
+
+# --- Python virtualenvs (uv-managed; all envs live under $VENV_HOME) ---
+export VENV_HOME="$HOME/.virtualenvs"
+
+# v [name]: activate a venv by name. Bare `v` lists envs. Exit with `deactivate`.
+v() {
+    if [ -z "$1" ]; then
+        command ls -1 "$VENV_HOME" 2>/dev/null | command grep -viE "^README" || true
+        return
+    fi
+    local act="$VENV_HOME/$1/bin/activate"
+    if [ ! -f "$act" ]; then
+        echo "v: no venv '$1' in $VENV_HOME (create: mkvenv $1)" >&2
+        return 1
+    fi
+    source "$act"
+}
+_v_complete() {
+    COMPREPLY=($(compgen -W "$(command ls -1 "$VENV_HOME" 2>/dev/null | command grep -viE "^README")" -- "${COMP_WORDS[COMP_CWORD]}"))
+}
+complete -F _v_complete v
+
+# mkvenv <name> [python-version]: create a uv venv under $VENV_HOME, logged in the dir README.
+mkvenv() {
+    [ -z "$1" ] && { echo "usage: mkvenv <name> [python-version]"; return 1; }
+    local dir="$VENV_HOME/$1"
+    [ -e "$dir" ] && { echo "mkvenv: '$1' already exists at $dir" >&2; return 1; }
+    uv venv ${2:+--python "$2"} "$dir" || return 1
+    local readme="$VENV_HOME/README.md"
+    [ -f "$readme" ] || printf "# Virtualenvs (uv-managed)\n\nAll envs live here; activate with \`v <name>\`.\n\n| env | created | python | description |\n|---|---|---|---|\n" > "$readme"
+    grep -q "^| \`$1\` " "$readme" 2>/dev/null || \
+        printf "| \`%s\` | %s | %s | _describe me_ |\n" "$1" "$(date +%Y-%m-%d)" "$(${dir}/bin/python --version 2>&1 | awk "{print \$2}")" >> "$readme"
+    echo "mkvenv: created $dir  ->  activate with: v $1"
+}
