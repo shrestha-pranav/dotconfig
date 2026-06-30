@@ -59,6 +59,7 @@ complete -F _wt_complete wt
 # Machine-local, secret, and work-specific settings (gitignored, not shared)
 test -f ~/.config/.local_aliases && . ~/.config/.local_aliases
 
+
 # --- Python virtualenvs (uv-managed; all envs live under $VENV_HOME) ---
 export VENV_HOME="$HOME/.virtualenvs"
 
@@ -80,15 +81,18 @@ _v_complete() {
 }
 complete -F _v_complete v
 
-# mkvenv <name> [python-version]: create a uv venv under $VENV_HOME, logged in the dir README.
+# mkvenv <name> [python-version]: create a uv venv under $VENV_HOME, install ipykernel,
+# register it as a global Jupyter kernel, and log a row in the dir README.
 mkvenv() {
     [ -z "$1" ] && { echo "usage: mkvenv <name> [python-version]"; return 1; }
-    local dir="$VENV_HOME/$1"
-    [ -e "$dir" ] && { echo "mkvenv: '$1' already exists at $dir" >&2; return 1; }
+    local name="$1" dir="$VENV_HOME/$1"
+    [ -e "$dir" ] && { echo "mkvenv: '$name' already exists at $dir" >&2; return 1; }
     uv venv ${2:+--python "$2"} "$dir" || return 1
+    uv pip install --python "$dir/bin/python" ipykernel || return 1
+    "$dir/bin/python" -m ipykernel install --user --name "$name" --display-name "Python ($name)" || return 1
     local readme="$VENV_HOME/README.md"
-    [ -f "$readme" ] || printf "# Virtualenvs (uv-managed)\n\nAll envs live here; activate with \`v <name>\`.\n\n| env | created | python | description |\n|---|---|---|---|\n" > "$readme"
-    grep -q "^| \`$1\` " "$readme" 2>/dev/null || \
-        printf "| \`%s\` | %s | %s | _describe me_ |\n" "$1" "$(date +%Y-%m-%d)" "$(${dir}/bin/python --version 2>&1 | awk "{print \$2}")" >> "$readme"
-    echo "mkvenv: created $dir  ->  activate with: v $1"
+    [ -f "$readme" ] || printf "# Virtualenvs (uv-managed)\n\nAll envs live here; activate with \`v <name>\`. Each registers a global Jupyter kernel.\n\n| env | created | python | description |\n|---|---|---|---|\n" > "$readme"
+    grep -q "^| \`$name\` " "$readme" 2>/dev/null || \
+        printf "| \`%s\` | %s | %s | _describe me_ |\n" "$name" "$(date +%Y-%m-%d)" "$(${dir}/bin/python --version 2>&1 | awk '{print $2}')" >> "$readme"
+    echo "mkvenv: created $dir + kernel 'Python ($name)'  ->  activate with: v $name"
 }
